@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/security
+                            http://www.springframework.org/schema/security/spring-security.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean id="helloService" class="com.company.HelloServiceImpl"/>
+    <context:annotation-config  />
+    <context:component-scan base-package="com.company"/>
+    <security:authentication-manager>
+        <security:authentication-provider>
+
+
+            <security:user-service>
+                <security:user name="Alshimaa"
+                               password="$2a$10$CkIMcNvEWzrNxrFlvVZYgu51w.zyc/NkoP5ro5rTnj0ivtwFIWLH2"
+                               authorities="ROLE_ADMIN"/>
+            </security:user-service>
+            <!--To ENCRPT PASSWorrd!-->
+            <security:password-encoder hash="bcrypt"/>
+        </security:authentication-provider>
+    </security:authentication-manager>
+
+    <security:global-method-security pre-post-annotations="enabled"/>
+</beans>
